@@ -12,6 +12,7 @@ const sendAll = (data:any)=>{
 wss.on('connection', socket=>{
     socketList.push(socket)
     socket.on('message', async ev=>{
+        console.log(ev)
         let data:{
             [key:string]:any
             data:any
