@@ -3,7 +3,14 @@ const wss = new WebSocketServer({
     port:3000,
     path:'/websocket'
 })
+const socketList:any[] = []
+const sendAll = (data:any)=>{
+    socketList.forEach(e=>{
+        e.send?.(data)
+    })
+}
 wss.on('connection', socket=>{
+    socketList.push(socket)
     socket.on('message', async ev=>{
         let data:{
             [key:string]:any
@@ -18,7 +25,13 @@ wss.on('connection', socket=>{
         }
         const emitMap:any = {
             async webrtcLogin(){
-                console.log(111)
+                sendAll(ev.toString())
+            },
+            async aa(){
+                sendAll(ev.toString())
+            },
+            async bb(){
+                sendAll(ev.toString())
             }
         }
         if(emitMap[data.emit]){
