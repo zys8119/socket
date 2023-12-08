@@ -28,10 +28,10 @@ wss.on('connection', socket=>{
             async webrtcLogin(){
                 sendAll(ev.toString())
             },
-            async aa(){
+            async webrtcStart(){
                 sendAll(ev.toString())
             },
-            async bb(){
+            async webrtcResponse(){
                 sendAll(ev.toString())
             }
         }
