@@ -12,7 +12,6 @@ const sendAll = (data:any)=>{
 wss.on('connection', socket=>{
     socketList.push(socket)
     socket.on('message', async ev=>{
-        console.log(ev.toString())
         let data:{
             [key:string]:any
             data:any
@@ -24,6 +23,7 @@ wss.on('connection', socket=>{
         }catch (e){
             data = {} as any
         }
+        console.log(data.emit, data.userId)
         const emitMap:any = {
             async webrtcLogin(){
                 sendAll(ev.toString())
