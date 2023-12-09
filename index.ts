@@ -39,4 +39,7 @@ wss.on('connection', socket=>{
             await emitMap[data.emit]?.()
         }
     })
+    socket.on('close', ()=>{
+        socketList.splice(socketList.indexOf((e:any)=>e === socket),1)
+    })
 })
