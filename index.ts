@@ -40,6 +40,9 @@ wss.on('connection', socket=>{
         }
     })
     socket.on('close', ()=>{
-        socketList.splice(socketList.indexOf((e:any)=>e === socket),1)
+        const index = socketList.indexOf((e:any)=>e === socket)
+        if(index > -1){
+            socketList.splice(index,1)
+        }
     })
 })
